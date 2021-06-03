@@ -19,6 +19,10 @@ class App extends Component {
     .then(users => this.setState({ monsters: users }))
   }
   
+  change = (e) => {
+    {this.setState({ searchField: e.target.value})}
+  }
+
   render (){
     //filtrování v search inputu
     const { monsters, searchField } = this.state;
@@ -26,7 +30,7 @@ class App extends Component {
 
     return(
       <div className="App">
-        <SearchBox type = "search" placeholder = "search monsters" onChange={e => {this.setState({ searchField: e.target.value})}}/> 
+        <SearchBox type = "search" placeholder = "search monsters" onChange={this.change}/> 
         <CardList monsters = {filteredMonsters} />
     </div>
   );
